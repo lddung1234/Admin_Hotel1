@@ -1,0 +1,80 @@
+﻿@{
+    var userName = Context.Session.GetString("userName");
+    var isAdmin = Context.Session.GetString("isAdmin");
+    var nameAction = ViewBag.nameAction;
+}
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="@(nameAction=="home"?"active":"")"> <a asp-route="Home"><i class="fas fa-tachometer-alt"></i> <span>Bộ điều khiển</span></a> </li>
+                <li class="list-divider"></li>
+                <li class="submenu @(nameAction=="HomeBooking"||nameAction=="EditBooking"||nameAction=="AddBooking"?"active":"")">
+                    <a asp-route="HomeBooking"><i class="fas fa-suitcase"></i> <span> Đặt phòng </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li class="@(nameAction=="HomeBooking"?"active":"")"><a asp-route="HomeBooking"> All Booking </a></li>
+                        @if (isAdmin == "True")
+                        {
+                            <li class="@(nameAction=="EditBooking"?"active":"")"><a asp-route="EditBooking"> Edit Booking </a></li>
+                            <li class="@(nameAction=="AddBooking"?"active":"")"><a asp-route="AddBooking"> Add Booking </a></li>
+                        }
+                        
+                    </ul>
+                </li>
+                <li class="submenu @(nameAction=="HomeCustomer"||nameAction=="EditCustomer"||nameAction=="AddCustomer"?"active":"")">
+                    <a href="#"><i class="fas fa-user"></i> <span> Khách hàng </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li class="@(nameAction=="HomeCustomer"?"active":"")"><a asp-route="HomeCustomer"> All customers </a></li>
+                        <li class="@(nameAction=="EditCustomer"?"active":"")"><a asp-route="EditCustomer"> Edit Customer </a></li>
+                        <li class="@(nameAction=="AddCustomer"?"active":"")"><a asp-route="AddCustomer"> Add Customer </a></li>
+                    </ul>
+                </li>
+                <li class="submenu @(nameAction=="HomeRooms"||nameAction=="EditRooms"||nameAction=="AddRooms"?"active":"")">
+                    <a href="#"><i class="fas fa-key"></i> <span> Phòng </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li class="@(nameAction=="HomeRooms"?"active":"")"><a asp-route="HomeRooms">All Rooms </a></li>
+                        <li class="@(nameAction=="EditRooms"?"active":"")"><a asp-route="EditRooms"> Edit Rooms </a></li>
+                        <li class="@(nameAction=="AddRooms"?"active":"")"><a asp-route="AddRooms"> Add Rooms </a></li>
+                    </ul>
+                </li>
+                <li class="submenu @(nameAction=="HomeStaff"||nameAction=="EditStaff"||nameAction=="AddStaff"?"active":"")">
+                    <a href="#"><i class="fas fa-user"></i> <span> Nhân viên </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li class="@(nameAction=="HomeStaff"?"active":"")"><a asp-route="HomeStaff">All Staff </a></li>
+                        <li class="@(nameAction=="EditStaff"?"active":"")"><a asp-route="EditStaff"> Edit Staff </a></li>
+                        <li class="@(nameAction=="AddStaff"?"active":"")"><a asp-route="AddStaff"> Add Staff </a></li>
+                    </ul>
+                </li>
+                <li class="@(nameAction=="pricing"?"active":"")"> <a asp-route="HomePricing"><i class="far fa-money-bill-alt"></i> <span>Giá phòng</span></a> </li>
+               
+                <li class="submenu @(nameAction=="Salary"||nameAction=="SalarySlip"?"active":"")">
+                    <a href="#"><i class="fas fa-book"></i> <span> Lương </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li class="@(nameAction=="Salary"?"active":"")"><a asp-route="Salary">Lương nhân viên </a></li>
+                        <li class="@(nameAction=="SalarySlip"?"active":"")"><a asp-route="SalarySlip">Phiếu lương </a></li>
+                    </ul>
+                </li>
+                <li class="@(nameAction=="calendar"?"active":"")"> <a asp-route="Calendar"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a> </li>
+                <li class="submenu @(nameAction=="HomeBlog"||nameAction=="DetailBlog"||nameAction=="AddBlog"||nameAction=="EditBlog"?"active":"")">
+                    <a href="#"><i class="fe fe-table"></i> <span> Tin tức </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li class="@(nameAction=="HomeBlog"?"active":"")"><a asp-route="HomeBlog">Blog </a></li>
+                        <li class="@(nameAction=="AddBlog"?"active":"")"><a asp-route="AddBlog">Add Blog </a></li>
+                        <li class="@(nameAction=="EditBlog"?"active":"")"><a asp-route="EditBlog">Edit Blog </a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-cog"></i> <span> Chức năng </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li><a asp-route="DangKi">Đăng ký </a></li>
+                        <li><a asp-route="QuenPassword">Quên mật khẩu </a></li>
+                        <li><a asp-route="DoiPassword">Thay đổi mật khẩu </a></li>
+                        <li><a asp-route="Lookscreen" >Chế độ ngủ </a></li>
+                        <li><a asp-route="Profile">Hồ sơ </a></li>
+                        <li><a asp-route="DangXuat">Đăng xuất </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

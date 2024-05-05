@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "_Layout";
+
+    // Kiểm tra xem người dùng đã đăng nhập hay chưa
+    var userName = Context.Session.GetString("userName");
+    var isLoggedIn = !string.IsNullOrEmpty(userName);
+
+    if (!isLoggedIn)
+    {
+        var routeName = ViewContext.ActionDescriptor.AttributeRouteInfo.Name;
+        
+        if (routeName != "DangNhap" && routeName != "DangKi" && routeName != "QuenPassword" && routeName != "DoiPassword")
+        {
+            Context.Response.Redirect("/dang-nhap");
+            return;
+        }
+    }
+}
